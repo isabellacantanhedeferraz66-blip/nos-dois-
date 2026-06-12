@@ -1,3 +1,25 @@
+// Get modal element
+const modal = document.getElementById('historia-modal');
+const nossaHistoriaBtn = document.getElementById('nossa-historia-btn');
+const closeBtn = document.querySelector('.close');
+
+// Open modal when clicking on "Nossa História"
+nossaHistoriaBtn.addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+
+// Close modal when clicking the close button
+closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
 // Smooth scroll behavior
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -69,7 +91,7 @@ setInterval(createFloatingHeart, 2000);
 
 // Trigger heart creation on click
 document.addEventListener('click', (e) => {
-    if (e.target.tagName !== 'A' && !e.target.closest('a')) {
+    if (e.target.tagName !== 'A' && !e.target.closest('a') && e.target !== nossaHistoriaBtn && !e.target.closest('#nossa-historia-btn')) {
         for (let i = 0; i < 3; i++) {
             setTimeout(() => createFloatingHeart(), i * 100);
         }
